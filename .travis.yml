@@ -1,0 +1,16 @@
+language: python
+matrix:
+    include:
+        - python: '3.8'
+        - python: 3.8
+          arch: arm64
+sudo: false
+# running in the container-based infrastructure without access to sudo
+install:
+    - python setup.py install 
+    - pip install -r dev-requirements.txt
+    - pip install dash
+    - pip install pytest
+
+script:
+    - python -m pytest
